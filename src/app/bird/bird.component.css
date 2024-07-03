@@ -1,0 +1,10 @@
+.bird {
+    @apply w-12 h-12 bg-yellow-500 rounded-full absolute transition-transform duration-200 ease-in-out;
+    animation: flapping 0.4s steps(3) infinite;
+}
+
+@keyframes flapping {
+    0% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+    100% { transform: rotate(-10deg); }
+}

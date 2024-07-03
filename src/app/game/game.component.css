@@ -1,0 +1,7 @@
+.game-area {
+    @apply relative bg-blue-300 w-full h-screen max-w-lg mx-auto overflow-hidden rounded-lg shadow-lg;
+}
+
+.score {
+    @apply absolute top-4 left-4 text-white text-xl font-bold;
+}
