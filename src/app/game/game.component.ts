@@ -1,11 +1,12 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { BirdComponent } from '../bird/bird.component';
 import { PipeComponent } from '../pipe/pipe.component';
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [BirdComponent, PipeComponent],
+  imports: [BirdComponent, PipeComponent, NgForOf],
   templateUrl: './game.component.html',
   styleUrl: './game.component.css'
 })
