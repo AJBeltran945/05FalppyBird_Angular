@@ -1,7 +1,16 @@
+/* game.component.scss */
 .game-area {
-    @apply relative bg-blue-300 w-full h-screen max-w-lg mx-auto overflow-hidden rounded-lg shadow-lg;
-}
+  @apply relative bg-blue-300 w-full h-full max-w-lg mx-auto overflow-hidden rounded-lg shadow-lg;
 
-.score {
-    @apply absolute top-4 left-4 text-white text-xl font-bold;
+  /* New styles to create a rectangle box with space around */
+  @apply max-w-[80%] max-h-[80vh] m-auto;
+
+  /* Fixed width and height for the game area box */
+  width: 90vw; /* Or another fixed width that fits well */
+  height: 80vh; /* Or another fixed height that fits well */
+  margin: 5vh auto; /* Center vertically with space on top and bottom */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+
+  /* Optional: Add padding if needed */
+  padding: 10px; /* Adjust as necessary */
 }

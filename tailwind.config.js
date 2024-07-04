@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 module.exports = {
   content: [
     "./src/**/*.{html,ts}",
@@ -6,16 +6,15 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
-        flap: {
+        flapping: {
           '0%, 100%': { transform: 'rotate(-10deg)' },
           '50%': { transform: 'rotate(10deg)' },
         }
       },
       animation: {
-        flap: 'flap 0.4s steps(3) infinite'
+        flapping: 'flapping 0.4s steps(3) infinite'
       }
-    }
+    },
   },
   plugins: [],
 }
-

@@ -1,12 +1,12 @@
-import { Component, Input } from '@angular/core';
+// bird.component.ts
+import { Component, Input, OnChanges } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-bird',
   standalone: true,
-  imports: [],
   templateUrl: './bird.component.html',
-  styleUrl: './bird.component.css',
+  styleUrls: ['./bird.component.scss'],
   animations: [
     trigger('flap', [
       state('flapping', style({ transform: 'rotate(10deg)' })),
@@ -16,7 +16,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     ])
   ]
 })
-export class BirdComponent {
+export class BirdComponent implements OnChanges {
   @Input() positionY: number = 0;
   isFlapping = false;
 

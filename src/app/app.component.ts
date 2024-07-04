@@ -5,7 +5,7 @@ import { GameComponent } from './game/game.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, GameComponent],
+  imports: [RouterOutlet, GameComponent, GameComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

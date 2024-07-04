@@ -1,23 +1,24 @@
-import { Component } from '@angular/core';
-import { BirdComponent } from '../bird/bird.component';
-import { PipeComponent } from '../pipe/pipe.component';
-import {NgForOf} from "@angular/common";
+// game.component.ts
+import {Component} from '@angular/core';
+import {CommonModule} from "@angular/common";
+import {BirdComponent} from "../bird/bird.component";
+import {PipeComponent} from "../pipe/pipe.component";
 
 @Component({
   selector: 'app-game',
-  standalone: true,
-  imports: [BirdComponent, PipeComponent, NgForOf],
   templateUrl: './game.component.html',
-  styleUrl: './game.component.css'
+  styleUrls: ['./game.component.scss'],
+  standalone: true,
+  imports: [CommonModule, BirdComponent, PipeComponent]
 })
 export class GameComponent {
   birdY = 200;
   birdVelocity = 0;
-  pipes = [{ x: 500, height: 200 }];
+  pipes: { x: number, height: number, isBottom: boolean }[] = [];
   score = 0;
   gravity = 0.5;
   pipeSpeed = 2;
-  pipeFrequency = 200;
+  pipeFrequency = 2000;
   pipeGap = 100;
 
   constructor() {
@@ -31,24 +32,18 @@ export class GameComponent {
 
     setInterval(() => {
       this.addPipe();
-    }, this.pipeFrequency * 100);
+    }, this.pipeFrequency);
   }
 
   updateGame() {
-    // Gravity
     this.birdVelocity += this.gravity;
     this.birdY += this.birdVelocity;
-
-    // Pipe movement
     this.pipes.forEach(pipe => pipe.x -= this.pipeSpeed);
 
-    // Remove off-screen pipes
     if (this.pipes.length && this.pipes[0].x < -50) {
       this.pipes.shift();
       this.score++;
     }
-
-    // Collision detection logic here
 
     if (this.birdY > window.innerHeight || this.birdY < 0) {
       this.gameOver();
@@ -59,16 +54,21 @@ export class GameComponent {
     this.birdVelocity = -10;
   }
 
+
   addPipe() {
-    const height = Math.floor(Math.random() * (window.innerHeight - this.pipeGap));
-    this.pipes.push({ x: window.innerWidth, height });
+    const pipeHeight = Math.floor(Math.random() * (window.innerHeight - this.pipeGap * 2));
+    const gapStart = pipeHeight + this.pipeGap;
+    this.pipes.push(
+      { x: window.innerWidth, height: pipeHeight, isBottom: false }, // Top pipe
+      { x: window.innerWidth, height: window.innerHeight - gapStart, isBottom: true } // Bottom pipe
+    );
   }
 
+
   gameOver() {
-    // Reset the game
     this.birdY = 200;
     this.birdVelocity = 0;
-    this.pipes = [{ x: 500, height: 200 }];
+    this.pipes = [];
     this.score = 0;
   }
 }

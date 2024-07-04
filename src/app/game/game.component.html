@@ -1,6 +1,5 @@
-<!-- game.component.html -->
 <div class="game-area" (click)="fly()">
-    <app-bird [positionY]="birdY"></app-bird>
-    <app-pipe *ngFor="let pipe of pipes" [positionX]="pipe.x" [height]="pipe.height"></app-pipe>
-    <div class="score">Score: {{ score }}</div>
+  <app-bird [positionY]="birdY"></app-bird>
+  <app-pipe *ngFor="let pipe of pipes" [positionX]="pipe.x" [height]="pipe.height"></app-pipe>
+  <div class="score">Score: {{ score }}</div>
 </div>

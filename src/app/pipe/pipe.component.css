@@ -1,3 +1,11 @@
 .pipe {
-    @apply bg-green-600 w-16 absolute bottom-0 rounded-t-lg transition-transform duration-[0.1s];
+  @apply bg-green-600 w-16 absolute transition-transform duration-[0.1s];
+}
+
+.bottom-pipe {
+  @apply bottom-0 rounded-t-lg;
+}
+
+:not(.bottom-pipe) {
+  @apply top-0 rounded-b-lg;
 }
